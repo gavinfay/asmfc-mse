@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Filters and joins | R for Excel Users</title>
+  <meta name="description" content="This is a workshop for RStudio::conf(2020) in San Francisco, California" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Filters and joins | R for Excel Users" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a workshop for RStudio::conf(2020) in San Francisco, California" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Filters and joins | R for Excel Users" />
+  
+  <meta name="twitter:description" content="This is a workshop for RStudio::conf(2020) in San Francisco, California" />
+  
+
+<meta name="author" content="Julie Lowndes &amp; Allison Horst" />
+
+
+<meta name="date" content="2020-01-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tidying.html"/>
+<link rel="next" href="collaborating.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for Excel Users</a></li>
+<li><a href="https://github.com/rstudio-conf-2020/r-for-excel/">← Go to GitHub repo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#agenda"><i class="fa fa-check"></i><b>1.1</b> Agenda</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-citations"><i class="fa fa-check"></i><b>1.3</b> Data citations</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>2</b> Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="overview.html"><a href="overview.html#welcome-1"><i class="fa fa-check"></i><b>2.1</b> Welcome!</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="overview.html"><a href="overview.html#you-are-all-welcome-here"><i class="fa fa-check"></i><b>2.1.1</b> You are all welcome here</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="overview.html"><a href="overview.html#guiding-principles-recurring-themes"><i class="fa fa-check"></i><b>2.2</b> Guiding principles / recurring themes</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> R &amp; RStudio, RMarkdown</a><ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#summary"><i class="fa fa-check"></i><b>3.1</b> Summary</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="rstudio.html"><a href="rstudio.html#objectives"><i class="fa fa-check"></i><b>3.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rstudio.html"><a href="rstudio.html#resources"><i class="fa fa-check"></i><b>3.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-orientation"><i class="fa fa-check"></i><b>3.2</b> RStudio Orientation</a></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#intro-to-rmarkdown"><i class="fa fa-check"></i><b>3.3</b> Intro to RMarkdown</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="rstudio.html"><a href="rstudio.html#create-an-rmarkdown-file"><i class="fa fa-check"></i><b>3.3.1</b> Create an RMarkdown file</a></li>
+<li class="chapter" data-level="3.3.2" data-path="rstudio.html"><a href="rstudio.html#knit-your-rmarkdown-file"><i class="fa fa-check"></i><b>3.3.2</b> Knit your RMarkdown file</a></li>
+<li class="chapter" data-level="3.3.3" data-path="rstudio.html"><a href="rstudio.html#markdown-text"><i class="fa fa-check"></i><b>3.3.3</b> Markdown text</a></li>
+<li class="chapter" data-level="3.3.4" data-path="rstudio.html"><a href="rstudio.html#r-code"><i class="fa fa-check"></i><b>3.3.4</b> R code</a></li>
+<li class="chapter" data-level="3.3.5" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.3.5</b> Code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="rstudio.html"><a href="rstudio.html#r-code-in-the-console"><i class="fa fa-check"></i><b>3.4</b> R code in the Console</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="rstudio.html"><a href="rstudio.html#error-messages"><i class="fa fa-check"></i><b>3.4.1</b> Error messages</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rstudio.html"><a href="rstudio.html#running-rmarkdown-code-chunks"><i class="fa fa-check"></i><b>3.4.2</b> Running RMarkdown code chunks</a></li>
+<li class="chapter" data-level="3.4.3" data-path="rstudio.html"><a href="rstudio.html#writing-code-in-a-file-vs.console"><i class="fa fa-check"></i><b>3.4.3</b> Writing code in a file vs. Console</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#r-functions"><i class="fa fa-check"></i><b>3.5</b> R functions</a></li>
+<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#help-pages"><i class="fa fa-check"></i><b>3.6</b> Help pages</a></li>
+<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#commenting"><i class="fa fa-check"></i><b>3.7</b> Commenting</a></li>
+<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#assigning-objects-with--"><i class="fa fa-check"></i><b>3.8</b> Assigning objects with <code>&lt;-</code></a></li>
+<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#r-packages"><i class="fa fa-check"></i><b>3.9</b> R Packages</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="rstudio.html"><a href="rstudio.html#how-do-you-know-what-packagesfunctions-exist"><i class="fa fa-check"></i><b>3.9.1</b> How do you know what packages/functions exist?</a></li>
+<li class="chapter" data-level="3.9.2" data-path="rstudio.html"><a href="rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>3.9.2</b> Installing R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="rstudio.html"><a href="rstudio.html#github-brief-intro-config"><i class="fa fa-check"></i><b>3.10</b> GitHub brief intro &amp; config</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="rstudio.html"><a href="rstudio.html#configure-github"><i class="fa fa-check"></i><b>3.10.1</b> Configure GitHub</a></li>
+<li class="chapter" data-level="3.10.2" data-path="rstudio.html"><a href="rstudio.html#ensure-that-gitgithubrstudio-are-communicating"><i class="fa fa-check"></i><b>3.10.2</b> Ensure that Git/GitHub/RStudio are communicating</a></li>
+<li class="chapter" data-level="3.10.3" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.10.3</b> Troubleshooting</a></li>
+<li class="chapter" data-level="3.10.4" data-path="rstudio.html"><a href="rstudio.html#end-rstudiormarkdown-session"><i class="fa fa-check"></i><b>3.10.4</b> END <strong>RStudio/RMarkdown</strong> session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
+<li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#summary-1"><i class="fa fa-check"></i><b>4.1</b> Summary</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="github.html"><a href="github.html#objectives-1"><i class="fa fa-check"></i><b>4.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="4.1.2" data-path="github.html"><a href="github.html#resources-1"><i class="fa fa-check"></i><b>4.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="github.html"><a href="github.html#why-should-r-users-use-github"><i class="fa fa-check"></i><b>4.2</b> Why should R users use Github?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="github.html"><a href="github.html#what-is-github-and-git"><i class="fa fa-check"></i><b>4.2.1</b> What is Github? And Git?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="github.html"><a href="github.html#create-a-repository-on-github.com"><i class="fa fa-check"></i><b>4.3</b> Create a repository on Github.com</a></li>
+<li class="chapter" data-level="4.4" data-path="github.html"><a href="github.html#clone-your-repository-using-rstudio"><i class="fa fa-check"></i><b>4.4</b> Clone your repository using RStudio</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="github.html"><a href="github.html#copy-the-repo-address"><i class="fa fa-check"></i><b>4.4.1</b> Copy the repo address</a></li>
+<li class="chapter" data-level="4.4.2" data-path="github.html"><a href="github.html#rstudio-new-project-1"><i class="fa fa-check"></i><b>4.4.2</b> RStudio: New Project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="github.html"><a href="github.html#select-version-control-1"><i class="fa fa-check"></i><b>4.4.3</b> Select Version Control</a></li>
+<li class="chapter" data-level="4.4.4" data-path="github.html"><a href="github.html#select-git-1"><i class="fa fa-check"></i><b>4.4.4</b> Select Git</a></li>
+<li class="chapter" data-level="4.4.5" data-path="github.html"><a href="github.html#paste-the-repo-address"><i class="fa fa-check"></i><b>4.4.5</b> Paste the repo address</a></li>
+<li class="chapter" data-level="4.4.6" data-path="github.html"><a href="github.html#admire-your-local-repo"><i class="fa fa-check"></i><b>4.4.6</b> Admire your local repo</a></li>
+<li class="chapter" data-level="4.4.7" data-path="github.html"><a href="github.html#inspect-your-local-repo"><i class="fa fa-check"></i><b>4.4.7</b> Inspect your local repo</a></li>
+<li class="chapter" data-level="4.4.8" data-path="github.html"><a href="github.html#edit-your-readme-file"><i class="fa fa-check"></i><b>4.4.8</b> Edit your README file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="github.html"><a href="github.html#sync-from-rstudio-local-to-github-remote"><i class="fa fa-check"></i><b>4.5</b> Sync from RStudio (local) to GitHub (remote)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="github.html"><a href="github.html#pull"><i class="fa fa-check"></i><b>4.5.1</b> Pull</a></li>
+<li class="chapter" data-level="4.5.2" data-path="github.html"><a href="github.html#stage"><i class="fa fa-check"></i><b>4.5.2</b> Stage</a></li>
+<li class="chapter" data-level="4.5.3" data-path="github.html"><a href="github.html#commit"><i class="fa fa-check"></i><b>4.5.3</b> Commit</a></li>
+<li class="chapter" data-level="4.5.4" data-path="github.html"><a href="github.html#push"><i class="fa fa-check"></i><b>4.5.4</b> Push</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="github.html"><a href="github.html#commit-history"><i class="fa fa-check"></i><b>4.6</b> Commit history</a></li>
+<li class="chapter" data-level="4.7" data-path="github.html"><a href="github.html#project-oriented-workflows"><i class="fa fa-check"></i><b>4.7</b> Project-oriented workflows</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="github.html"><a href="github.html#working-directory"><i class="fa fa-check"></i><b>4.7.1</b> Working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="github.html"><a href="github.html#project-oriented-workflows-in-action-aka-our-analytical-setup"><i class="fa fa-check"></i><b>4.8</b> Project-oriented workflows in action (aka our analytical setup)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="github.html"><a href="github.html#create-a-new-rmd-file"><i class="fa fa-check"></i><b>4.8.1</b> Create a new Rmd file</a></li>
+<li class="chapter" data-level="4.8.2" data-path="github.html"><a href="github.html#create-data-and-figures-folders"><i class="fa fa-check"></i><b>4.8.2</b> Create data and figures folders</a></li>
+<li class="chapter" data-level="4.8.3" data-path="github.html"><a href="github.html#move-data-files-to-data-folder"><i class="fa fa-check"></i><b>4.8.3</b> Move data files to data folder</a></li>
+<li class="chapter" data-level="4.8.4" data-path="github.html"><a href="github.html#activity-1"><i class="fa fa-check"></i><b>4.8.4</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="github.html"><a href="github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.9</b> Committing - how often? Tracking changes in your files</a></li>
+<li class="chapter" data-level="4.10" data-path="github.html"><a href="github.html#issues"><i class="fa fa-check"></i><b>4.10</b> Issues</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="github.html"><a href="github.html#issues-in-the-wild"><i class="fa fa-check"></i><b>4.10.1</b> Issues in the wild!</a></li>
+<li class="chapter" data-level="4.10.2" data-path="github.html"><a href="github.html#end-github-session"><i class="fa fa-check"></i><b>4.10.2</b> END <strong>GitHub</strong> session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Graphs with ggplot2</a><ul>
+<li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#summary-2"><i class="fa fa-check"></i><b>5.1</b> Summary</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="ggplot2.html"><a href="ggplot2.html#objectives-2"><i class="fa fa-check"></i><b>5.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="5.1.2" data-path="ggplot2.html"><a href="ggplot2.html#resources-2"><i class="fa fa-check"></i><b>5.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started---in-existing-.rmd-attach-packages"><i class="fa fa-check"></i><b>5.2</b> Getting started - In existing .Rmd, attach packages</a></li>
+<li class="chapter" data-level="5.3" data-path="ggplot2.html"><a href="ggplot2.html#read-in-.xlsx-and-.csv-files"><i class="fa fa-check"></i><b>5.3</b> Read in .xlsx and .csv files</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="ggplot2.html"><a href="ggplot2.html#read_csv-to-read-in-comma-separated-value-.csv-files"><i class="fa fa-check"></i><b>5.3.1</b> <code>read_csv()</code> to read in comma-separated-value (.csv) files</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ggplot2.html"><a href="ggplot2.html#readxl-to-read-in-excel-files"><i class="fa fa-check"></i><b>5.3.2</b> <code>readxl</code> to read in Excel files</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#our-first-ggplot-graph-visitors-to-channel-islands-np"><i class="fa fa-check"></i><b>5.4</b> Our first ggplot graph: Visitors to Channel Islands NP</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#intro-to-customizing-ggplot-graphs"><i class="fa fa-check"></i><b>5.5</b> Intro to customizing <code>ggplot</code> graphs</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="ggplot2.html"><a href="ggplot2.html#activity-customize-your-own-ggplot-graph"><i class="fa fa-check"></i><b>5.5.1</b> Activity: customize your own ggplot graph</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#mapping-variables-onto-aesthetics"><i class="fa fa-check"></i><b>5.6</b> Mapping variables onto aesthetics</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="ggplot2.html"><a href="ggplot2.html#activity-map-variables-onto-graph-aesthetics"><i class="fa fa-check"></i><b>5.6.1</b> Activity: map variables onto graph aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-complete-themes"><i class="fa fa-check"></i><b>5.7</b> ggplot2 complete themes</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#updating-axis-labels-and-titles"><i class="fa fa-check"></i><b>5.8</b> Updating axis labels and titles</a></li>
+<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#combining-compatible-geoms"><i class="fa fa-check"></i><b>5.9</b> Combining compatible geoms</a></li>
+<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#multi-series-ggplot-graphs"><i class="fa fa-check"></i><b>5.10</b> Multi-series ggplot graphs</a></li>
+<li class="chapter" data-level="5.11" data-path="ggplot2.html"><a href="ggplot2.html#faceting-ggplot-graphs"><i class="fa fa-check"></i><b>5.11</b> Faceting ggplot graphs</a></li>
+<li class="chapter" data-level="5.12" data-path="ggplot2.html"><a href="ggplot2.html#exporting-a-ggplot-graph-with-ggsave"><i class="fa fa-check"></i><b>5.12</b> Exporting a ggplot graph with <code>ggsave()</code></a><ul>
+<li class="chapter" data-level="5.12.1" data-path="ggplot2.html"><a href="ggplot2.html#end-ggplot-session"><i class="fa fa-check"></i><b>5.12.1</b> End <code>ggplot</code> session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="pivot.html"><a href="pivot.html"><i class="fa fa-check"></i><b>6</b> Pivot Tables with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="pivot.html"><a href="pivot.html#summary-3"><i class="fa fa-check"></i><b>6.1</b> Summary</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="pivot.html"><a href="pivot.html#objectives-3"><i class="fa fa-check"></i><b>6.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="6.1.2" data-path="pivot.html"><a href="pivot.html#resources-3"><i class="fa fa-check"></i><b>6.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="pivot.html"><a href="pivot.html#overview-setup"><i class="fa fa-check"></i><b>6.2</b> Overview &amp; setup</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="pivot.html"><a href="pivot.html#view-data-in-excel"><i class="fa fa-check"></i><b>6.2.1</b> View data in Excel</a></li>
+<li class="chapter" data-level="6.2.2" data-path="pivot.html"><a href="pivot.html#rmarkdown-setup"><i class="fa fa-check"></i><b>6.2.2</b> RMarkdown setup</a></li>
+<li class="chapter" data-level="6.2.3" data-path="pivot.html"><a href="pivot.html#our-task"><i class="fa fa-check"></i><b>6.2.3</b> Our task</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="pivot.html"><a href="pivot.html#pivot-table-demo"><i class="fa fa-check"></i><b>6.3</b> Pivot table demo</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="pivot.html"><a href="pivot.html#pivot-one-variable"><i class="fa fa-check"></i><b>6.3.1</b> pivot one variable</a></li>
+<li class="chapter" data-level="6.3.2" data-path="pivot.html"><a href="pivot.html#pivot-two-variables"><i class="fa fa-check"></i><b>6.3.2</b> pivot two variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="pivot.html"><a href="pivot.html#group_by-summarize"><i class="fa fa-check"></i><b>6.4</b> <code>group_by()</code> %&gt;% <code>summarize()</code></a><ul>
+<li class="chapter" data-level="6.4.1" data-path="pivot.html"><a href="pivot.html#group_by-one-variable"><i class="fa fa-check"></i><b>6.4.1</b> <code>group_by</code> one variable</a></li>
+<li class="chapter" data-level="6.4.2" data-path="pivot.html"><a href="pivot.html#group_by-multiple-variables"><i class="fa fa-check"></i><b>6.4.2</b> <code>group_by</code> multiple variables</a></li>
+<li class="chapter" data-level="6.4.3" data-path="pivot.html"><a href="pivot.html#summarize-multiple-variables"><i class="fa fa-check"></i><b>6.4.3</b> <code>summarize</code> multiple variables</a></li>
+<li class="chapter" data-level="6.4.4" data-path="pivot.html"><a href="pivot.html#table-formatting-with-kable"><i class="fa fa-check"></i><b>6.4.4</b> Table formatting with <code>kable()</code></a></li>
+<li class="chapter" data-level="6.4.5" data-path="pivot.html"><a href="pivot.html#r-code-in-line-in-rmarkdown"><i class="fa fa-check"></i><b>6.4.5</b> R code in-line in RMarkdown</a></li>
+<li class="chapter" data-level="6.4.6" data-path="pivot.html"><a href="pivot.html#activity-2"><i class="fa fa-check"></i><b>6.4.6</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="pivot.html"><a href="pivot.html#oh-no-they-sent-the-wrong-data"><i class="fa fa-check"></i><b>6.5</b> Oh no, they sent the wrong data!</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="pivot.html"><a href="pivot.html#knit-push-show-differences-on-github"><i class="fa fa-check"></i><b>6.5.1</b> Knit, push, &amp; show differences on GitHub</a></li>
+<li class="chapter" data-level="6.5.2" data-path="pivot.html"><a href="pivot.html#dplyrcount"><i class="fa fa-check"></i><b>6.5.2</b> <code>dplyr::count()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="pivot.html"><a href="pivot.html#mutate"><i class="fa fa-check"></i><b>6.6</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="6.7" data-path="pivot.html"><a href="pivot.html#select"><i class="fa fa-check"></i><b>6.7</b> <code>select()</code></a><ul>
+<li class="chapter" data-level="6.7.1" data-path="pivot.html"><a href="pivot.html#end-dplyr-pivot-tables-session"><i class="fa fa-check"></i><b>6.7.1</b> END <strong>dplyr-pivot-tables</strong> session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidying.html"><a href="tidying.html"><i class="fa fa-check"></i><b>7</b> Tidying</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidying.html"><a href="tidying.html#summary-4"><i class="fa fa-check"></i><b>7.1</b> Summary</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tidying.html"><a href="tidying.html#tidy-data"><i class="fa fa-check"></i><b>7.1.1</b> Tidy data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidying.html"><a href="tidying.html#objectives-4"><i class="fa fa-check"></i><b>7.1.2</b> Objectives</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidying.html"><a href="tidying.html#resources-4"><i class="fa fa-check"></i><b>7.1.3</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidying.html"><a href="tidying.html#set-up"><i class="fa fa-check"></i><b>7.2</b> Set-up</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="tidying.html"><a href="tidying.html#create-a-new-r-markdown-and-attach-packages"><i class="fa fa-check"></i><b>7.2.1</b> Create a new R Markdown and attach packages</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tidying.html"><a href="tidying.html#read_excel-to-read-in-data-from-an-excel-worksheet"><i class="fa fa-check"></i><b>7.2.2</b> <code>read_excel()</code> to read in data from an Excel worksheet</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tidying.html"><a href="tidying.html#tidyrpivot_longer-to-reshape-from-wider-to-longer-format"><i class="fa fa-check"></i><b>7.3</b> <code>tidyr::pivot_longer()</code> to reshape from wider-to-longer format</a></li>
+<li class="chapter" data-level="7.4" data-path="tidying.html"><a href="tidying.html#tidyrpivot_wider-to-convert-from-longer-to-wider-format"><i class="fa fa-check"></i><b>7.4</b> <code>tidyr::pivot_wider()</code> to convert from longer-to-wider format</a></li>
+<li class="chapter" data-level="7.5" data-path="tidying.html"><a href="tidying.html#janitorclean_names-to-clean-up-column-names"><i class="fa fa-check"></i><b>7.5</b> <code>janitor::clean_names()</code> to clean up column names</a></li>
+<li class="chapter" data-level="7.6" data-path="tidying.html"><a href="tidying.html#tidyrunite-and-tidyrseparate-to-combine-or-separate-information-in-columns"><i class="fa fa-check"></i><b>7.6</b> <code>tidyr::unite()</code> and <code>tidyr::separate()</code> to combine or separate information in column(s)</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tidying.html"><a href="tidying.html#tidyrunite-to-merge-information-from-separate-columns"><i class="fa fa-check"></i><b>7.6.1</b> <code>tidyr::unite()</code> to merge information from separate columns</a></li>
+<li class="chapter" data-level="7.6.2" data-path="tidying.html"><a href="tidying.html#tidyrseparate-to-separate-information-into-multiple-columns"><i class="fa fa-check"></i><b>7.6.2</b> <code>tidyr::separate()</code> to separate information into multiple columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidying.html"><a href="tidying.html#stringrstr_replace-to-replace-a-pattern"><i class="fa fa-check"></i><b>7.7</b> <code>stringr::str_replace()</code> to replace a pattern</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="tidying.html"><a href="tidying.html#end-tidying-session"><i class="fa fa-check"></i><b>7.7.1</b> END <strong>tidying</strong> session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="filters.html"><a href="filters.html"><i class="fa fa-check"></i><b>8</b> Filters and joins</a><ul>
+<li class="chapter" data-level="8.1" data-path="filters.html"><a href="filters.html#summary-5"><i class="fa fa-check"></i><b>8.1</b> Summary</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="filters.html"><a href="filters.html#objectives-5"><i class="fa fa-check"></i><b>8.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="8.1.2" data-path="filters.html"><a href="filters.html#resources-5"><i class="fa fa-check"></i><b>8.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="filters.html"><a href="filters.html#set-up-create-a-new-.rmd-attach-packages-get-data"><i class="fa fa-check"></i><b>8.2</b> Set-up: Create a new .Rmd, attach packages &amp; get data</a></li>
+<li class="chapter" data-level="8.3" data-path="filters.html"><a href="filters.html#dplyrfilter-to-conditionally-subset-by-rows"><i class="fa fa-check"></i><b>8.3</b> <code>dplyr::filter()</code> to conditionally subset by rows</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="filters.html"><a href="filters.html#filter-rows-by-matching-a-single-character-string"><i class="fa fa-check"></i><b>8.3.1</b> Filter rows by matching a single character string</a></li>
+<li class="chapter" data-level="8.3.2" data-path="filters.html"><a href="filters.html#filter-rows-based-on-numeric-conditions"><i class="fa fa-check"></i><b>8.3.2</b> Filter rows based on numeric conditions</a></li>
+<li class="chapter" data-level="8.3.3" data-path="filters.html"><a href="filters.html#filter-to-return-rows-that-match-this-or-that-or-that"><i class="fa fa-check"></i><b>8.3.3</b> Filter to return rows that match <em>this</em> OR <em>that</em> OR <em>that</em></a></li>
+<li class="chapter" data-level="8.3.4" data-path="filters.html"><a href="filters.html#filter-to-return-observations-that-match-this-and-that"><i class="fa fa-check"></i><b>8.3.4</b> Filter to return observations that match <strong>this</strong> AND <strong>that</strong></a></li>
+<li class="chapter" data-level="8.3.5" data-path="filters.html"><a href="filters.html#activity-combined-filter-conditions"><i class="fa fa-check"></i><b>8.3.5</b> Activity: combined filter conditions</a></li>
+<li class="chapter" data-level="8.3.6" data-path="filters.html"><a href="filters.html#stringrstr_detect-to-filter-by-a-partial-pattern"><i class="fa fa-check"></i><b>8.3.6</b> <code>stringr::str_detect()</code> to filter by a partial pattern</a></li>
+<li class="chapter" data-level="8.3.7" data-path="filters.html"><a href="filters.html#activity-6"><i class="fa fa-check"></i><b>8.3.7</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="filters.html"><a href="filters.html#dplyr_join-to-merge-data-frames"><i class="fa fa-check"></i><b>8.4</b> <code>dplyr::*_join()</code> to merge data frames</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="filters.html"><a href="filters.html#full_join-to-merge-data-frames-keeping-everything"><i class="fa fa-check"></i><b>8.4.1</b> <code>full_join()</code> to merge data frames, keeping everything</a></li>
+<li class="chapter" data-level="8.4.2" data-path="filters.html"><a href="filters.html#left_joinxy-to-merge-data-frames-keeping-everything-in-the-x-data-frame-and-only-matches-from-the-y-data-frame"><i class="fa fa-check"></i><b>8.4.2</b> <code>left_join(x,y)</code> to merge data frames, keeping everything in the ‘x’ data frame and only matches from the ‘y’ data frame</a></li>
+<li class="chapter" data-level="8.4.3" data-path="filters.html"><a href="filters.html#inner_join-to-merge-data-frames-only-keeping-observations-with-a-match-in-both"><i class="fa fa-check"></i><b>8.4.3</b> <code>inner_join()</code> to merge data frames, only keeping observations with a match in <strong>both</strong></a></li>
+<li class="chapter" data-level="8.4.4" data-path="filters.html"><a href="filters.html#filter-and-join-in-a-sequence"><i class="fa fa-check"></i><b>8.4.4</b> <code>filter()</code> and <code>join()</code> in a sequence</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="filters.html"><a href="filters.html#an-html-table-with-kable-and-kableextra"><i class="fa fa-check"></i><b>8.5</b> An HTML table with <code>kable()</code> and <code>kableExtra</code></a><ul>
+<li class="chapter" data-level="8.5.1" data-path="filters.html"><a href="filters.html#end-filter-_join-section"><i class="fa fa-check"></i><b>8.5.1</b> End <code>filter()</code> + <code>_join()</code> section!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating &amp; getting help</a><ul>
+<li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#summary-6"><i class="fa fa-check"></i><b>9.1</b> Summary</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="collaborating.html"><a href="collaborating.html#objectives-6"><i class="fa fa-check"></i><b>9.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="9.1.2" data-path="collaborating.html"><a href="collaborating.html#resources-6"><i class="fa fa-check"></i><b>9.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#r-communities"><i class="fa fa-check"></i><b>9.2</b> R communities</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="collaborating.html"><a href="collaborating.html#community-awesomeness"><i class="fa fa-check"></i><b>9.2.1</b> Community awesomeness</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#how-to-use-twitter-for-rstats"><i class="fa fa-check"></i><b>9.3</b> How to use Twitter for #rstats</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="collaborating.html"><a href="collaborating.html#examples"><i class="fa fa-check"></i><b>9.3.1</b> Examples</a></li>
+<li class="chapter" data-level="9.3.2" data-path="collaborating.html"><a href="collaborating.html#how-to-twitter"><i class="fa fa-check"></i><b>9.3.2</b> How to Twitter</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#getting-help"><i class="fa fa-check"></i><b>9.4</b> Getting help</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="collaborating.html"><a href="collaborating.html#read-the-error-message"><i class="fa fa-check"></i><b>9.4.1</b> Read the error message</a></li>
+<li class="chapter" data-level="9.4.2" data-path="collaborating.html"><a href="collaborating.html#googling"><i class="fa fa-check"></i><b>9.4.2</b> Googling</a></li>
+<li class="chapter" data-level="9.4.3" data-path="collaborating.html"><a href="collaborating.html#create-a-reprex"><i class="fa fa-check"></i><b>9.4.3</b> Create a reprex</a></li>
+<li class="chapter" data-level="9.4.4" data-path="collaborating.html"><a href="collaborating.html#activity-7"><i class="fa fa-check"></i><b>9.4.4</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#collaborating-with-github"><i class="fa fa-check"></i><b>9.5</b> Collaborating with GitHub</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="collaborating.html"><a href="collaborating.html#create-repo-partner-1"><i class="fa fa-check"></i><b>9.5.1</b> Create repo (Partner 1)</a></li>
+<li class="chapter" data-level="9.5.2" data-path="collaborating.html"><a href="collaborating.html#create-a-gh-pages-branch-partner-1"><i class="fa fa-check"></i><b>9.5.2</b> Create a gh-pages branch (Partner 1)</a></li>
+<li class="chapter" data-level="9.5.3" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-privileges-partner-1-and-2"><i class="fa fa-check"></i><b>9.5.3</b> Give your collaborator privileges (Partner 1 and 2)</a></li>
+<li class="chapter" data-level="9.5.4" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-r-project-partner-1"><i class="fa fa-check"></i><b>9.5.4</b> Clone to a new R Project (Partner 1)</a></li>
+<li class="chapter" data-level="9.5.5" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-r-project-partner-2"><i class="fa fa-check"></i><b>9.5.5</b> Clone to a new R Project (Partner 2)</a></li>
+<li class="chapter" data-level="9.5.6" data-path="collaborating.html"><a href="collaborating.html#create-data-folder-partner-2"><i class="fa fa-check"></i><b>9.5.6</b> Create data folder (Partner 2)</a></li>
+<li class="chapter" data-level="9.5.7" data-path="collaborating.html"><a href="collaborating.html#state-of-the-repository"><i class="fa fa-check"></i><b>9.5.7</b> State of the Repository</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#merge-conflicts"><i class="fa fa-check"></i><b>9.6</b> Merge conflicts</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="collaborating.html"><a href="collaborating.html#pull-partners-1-and-2"><i class="fa fa-check"></i><b>9.6.1</b> Pull (Partners 1 and 2)</a></li>
+<li class="chapter" data-level="9.6.2" data-path="collaborating.html"><a href="collaborating.html#create-a-conflict-partners-1-and-2"><i class="fa fa-check"></i><b>9.6.2</b> Create a conflict (Partners 1 and 2)</a></li>
+<li class="chapter" data-level="9.6.3" data-path="collaborating.html"><a href="collaborating.html#sync-partner-2"><i class="fa fa-check"></i><b>9.6.3</b> Sync (Partner 2)</a></li>
+<li class="chapter" data-level="9.6.4" data-path="collaborating.html"><a href="collaborating.html#sync-attempts-fixes-partner-1"><i class="fa fa-check"></i><b>9.6.4</b> Sync attempts &amp; fixes (Partner 1)</a></li>
+<li class="chapter" data-level="9.6.5" data-path="collaborating.html"><a href="collaborating.html#activity-8"><i class="fa fa-check"></i><b>9.6.5</b> Activity</a></li>
+<li class="chapter" data-level="9.6.6" data-path="collaborating.html"><a href="collaborating.html#how-do-you-avoid-merge-conflicts"><i class="fa fa-check"></i><b>9.6.6</b> How do you avoid merge conflicts?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#create-your-collaborative-website"><i class="fa fa-check"></i><b>9.7</b> Create your collaborative website</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="collaborating.html"><a href="collaborating.html#end-collaborating-session"><i class="fa fa-check"></i><b>9.7.1</b> END <strong>collaborating</strong> session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="synthesis.html"><a href="synthesis.html"><i class="fa fa-check"></i><b>10</b> Synthesis</a><ul>
+<li class="chapter" data-level="10.1" data-path="synthesis.html"><a href="synthesis.html#summary-7"><i class="fa fa-check"></i><b>10.1</b> Summary</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="synthesis.html"><a href="synthesis.html#objectives-7"><i class="fa fa-check"></i><b>10.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="10.1.2" data-path="synthesis.html"><a href="synthesis.html#resources-7"><i class="fa fa-check"></i><b>10.1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="synthesis.html"><a href="synthesis.html#attach-packages-read-in-and-explore-the-data"><i class="fa fa-check"></i><b>10.2</b> Attach packages, read in and explore the data</a></li>
+<li class="chapter" data-level="10.3" data-path="synthesis.html"><a href="synthesis.html#some-data-cleaning-to-get-salmon-landings-by-species"><i class="fa fa-check"></i><b>10.3</b> Some data cleaning to get salmon landings by species</a></li>
+<li class="chapter" data-level="10.4" data-path="synthesis.html"><a href="synthesis.html#find-total-annual-us-value-for-each-salmon-subgroup"><i class="fa fa-check"></i><b>10.4</b> Find total annual US value ($) for each salmon subgroup</a></li>
+<li class="chapter" data-level="10.5" data-path="synthesis.html"><a href="synthesis.html#make-a-graph-of-us-commercial-fisheries-value-by-species-over-time-with-ggplot2"><i class="fa fa-check"></i><b>10.5</b> Make a graph of US commercial fisheries value by species over time with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="10.6" data-path="synthesis.html"><a href="synthesis.html#built-in-color-palettes"><i class="fa fa-check"></i><b>10.6</b> Built-in color palettes</a></li>
+<li class="chapter" data-level="10.7" data-path="synthesis.html"><a href="synthesis.html#sync-with-github-remote"><i class="fa fa-check"></i><b>10.7</b> Sync with GitHub remote</a></li>
+<li class="chapter" data-level="10.8" data-path="synthesis.html"><a href="synthesis.html#add-an-image-to-your-partners-document"><i class="fa fa-check"></i><b>10.8</b> Add an image to your partner’s document</a><ul>
+<li class="chapter" data-level="10.8.1" data-path="synthesis.html"><a href="synthesis.html#end-synthesis-session"><i class="fa fa-check"></i><b>10.8.1</b> End Synthesis session!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="closing.html"><a href="closing.html"><i class="fa fa-check"></i><b>11</b> Closing</a><ul>
+<li class="chapter" data-level="11.1" data-path="closing.html"><a href="closing.html#continued-learning"><i class="fa fa-check"></i><b>11.1</b> Continued learning</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="closing.html"><a href="closing.html#communities-to-join"><i class="fa fa-check"></i><b>11.1.1</b> Communities to join</a></li>
+<li class="chapter" data-level="11.1.2" data-path="closing.html"><a href="closing.html#resources-8"><i class="fa fa-check"></i><b>11.1.2</b> Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Excel Users</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="filters" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Filters and joins</h1>
+<div id="summary-5" class="section level2">
+<h2><span class="header-section-number">8.1</span> Summary</h2>
+<p>In previous sessions, we’ve learned to do some basic wrangling and find summary information with functions in the <code>dplyr</code> package, which exists within the <code>tidyverse</code>. In this session, we’ll expand our data wrangling toolkit using:</p>
+<ul>
+<li><code>filter()</code> to conditionally subset our data by <strong>rows</strong>, and</li>
+<li><code>*_join()</code> functions to merge data frames together</li>
+<li>And we’ll make a nicely formatted HTML table with <code>kable()</code> and <code>kableExtra</code></li>
+</ul>
+<p>The combination of <code>filter()</code> and <code>*_join()</code> - to return rows satisfying a condition we specify, and merging data frames by like variables - is analogous to the useful VLOOKUP function in Excel.</p>
+<div id="objectives-5" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Objectives</h3>
+<ul>
+<li>Use <code>filter()</code> to subset data frames, returning <strong>rows</strong> that satisfy variable conditions</li>
+<li>Use <code>full_join()</code>, <code>left_join()</code>, and <code>inner_join()</code> to merge data frames, with different endpoints in mind</li>
+<li>Use <code>filter()</code> and <code>*_join()</code> as part of a wrangling sequence</li>
+</ul>
+</div>
+<div id="resources-5" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Resources</h3>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter()</code> documentation from tidyverse.org</a></li>
+<li><a href="https://dplyr.tidyverse.org/reference/join.html"><code>join()</code> documentation from tidyverse.org</a></li>
+<li><a href="https://r4ds.had.co.nz/">Chapters 5 and 13 in <em>R for Data Science</em> by Garrett Grolemund and Hadley Wickham</a></li>
+<li><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">“Create awesome HTML tables with knitr::kable() and kableExtra” by Hao Zhu</a></li>
+</ul>
+</div>
+</div>
+<div id="set-up-create-a-new-.rmd-attach-packages-get-data" class="section level2">
+<h2><span class="header-section-number">8.2</span> Set-up: Create a new .Rmd, attach packages &amp; get data</h2>
+<p>Create a new R Markdown document in your r-workshop project and knit to save as <strong>filter_join.Rmd</strong>. Remove all the example code (everything below the set-up code chunk).</p>
+<p>In this session, we’ll attach four packages:</p>
+<ul>
+<li><code>tidyverse</code></li>
+<li><code>readxl</code></li>
+<li><code>here</code></li>
+<li><code>kableExtra</code></li>
+</ul>
+<p>Attach the packages in the setup code chunk in your .Rmd:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="kw">library</span>(here) </a>
+<a class="sourceLine" id="cb109-4" data-line-number="4"><span class="kw">library</span>(kableExtra)</a></code></pre></div>
+<p>Then create a new code chunk to read in two files from your ‘data’ subfolder:</p>
+<ul>
+<li>fish.csv</li>
+<li>kelp_fronds.xlsx (read in only the “abur” worksheet by adding argument <code>sheet = &quot;abur&quot;</code> to <code>read_excel()</code>)</li>
+</ul>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="co"># Read in data: </span></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">fish &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;fish.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb110-3" data-line-number="3">kelp_abur &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;kelp_fronds.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;abur&quot;</span>)</a></code></pre></div>
+<p>We should always explore the data we’ve read in. Use functions like <code>View()</code>, <code>names()</code>, <code>summary()</code>, <code>head()</code> and <code>tail()</code> to check them out.
+Now, let’s use <code>filter()</code> to decide which observations (rows) we’ll keep or exclude in new subsets, similar to using Excel’s VLOOKUP function or filter tool.</p>
+</div>
+<div id="dplyrfilter-to-conditionally-subset-by-rows" class="section level2">
+<h2><span class="header-section-number">8.3</span> <code>dplyr::filter()</code> to conditionally subset by rows</h2>
+<p>Use <code>filter()</code> to let R know which <strong>rows</strong> you want to keep or exclude, based whether or not their contents match conditions that you set for one or more variables.</p>
+<p><img src="img/rstudio-cheatsheet-filter.png" /></p>
+<p>Some examples in words that might inspire you to use <code>filter()</code>:</p>
+<ul>
+<li>“I only want to keep rows where the temperature is greater than 90°F.”</li>
+<li>“I want to keep all observations <strong>except</strong> those where the tree type is listed as <strong>unknown</strong>.”</li>
+<li>“I want to make a new subset with only data for mountain lions (the species variable) in California (the state variable).”</li>
+</ul>
+<p>When we use <code>filter()</code>, we need to let R know a couple of things:</p>
+<ul>
+<li>What data frame we’re filtering from</li>
+<li>What condition(s) we want observations to <strong>match</strong> and/or <strong>not match</strong> in order to keep them in the new subset</li>
+</ul>
+<p>Here, we’ll learn some common ways to use <code>filter()</code>.</p>
+<div id="filter-rows-by-matching-a-single-character-string" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Filter rows by matching a single character string</h3>
+<p>Let’s say we want to keep all observations from the <strong>fish</strong> data frame where the common name is “garibaldi” (fun fact: that’s California’s official marine state fish, protected in California coastal waters!).</p>
+<p>Here, we need to tell R to only <em>keep rows</em> from the <strong>fish</strong> data frame when the common name (<strong>common_name</strong> variable) exactly matches <strong>garibaldi</strong>.</p>
+<p>Use <code>==</code> to ask R to look for exact matches:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">fish_garibaldi &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(common_name <span class="op">==</span><span class="st"> &quot;garibaldi&quot;</span>)</a></code></pre></div>
+<p>Check out the <strong>fish_garibaldi</strong> object to ensure that only <em>garibaldi</em> observations remain.</p>
+<div id="activity-4" class="section level4">
+<h4><span class="header-section-number">8.3.1.1</span> Activity</h4>
+<p><strong>Task</strong>: Create a subset starting from the <strong>fish</strong> data frame, stored as object <strong>fish_mohk</strong>, that only contains observations from Mohawk Reef (site entered as “mohk”).</p>
+<p><strong>Solution</strong>:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">fish_mohk &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;mohk&quot;</span>)</a></code></pre></div>
+<p>Explore the subset you just created to ensure that only Mohawk Reef observations are returned.</p>
+</div>
+</div>
+<div id="filter-rows-based-on-numeric-conditions" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Filter rows based on numeric conditions</h3>
+<p>Use expected operators (&gt;, &lt;, &gt;=, &lt;=, ==) to set conditions for a numeric variable when filtering. For this example, we only want to retain observations when the <strong>total_count</strong> column value is &gt;= 50:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">fish_over50 &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(total_count <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>)</a></code></pre></div>
+</div>
+<div id="filter-to-return-rows-that-match-this-or-that-or-that" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> Filter to return rows that match <em>this</em> OR <em>that</em> OR <em>that</em></h3>
+<p>What if we want to return a subset of the <strong>fish</strong> df that contains <em>garibaldi</em>, <em>blacksmith</em> OR <em>black surfperch</em>?</p>
+<p>There are several ways to write an “OR” statement for filtering, which will keep any observations that match Condition A <em>or</em> Condition B <em>or</em> Condition C. In this example, we will create a subset from <strong>fish</strong> that only contains rows where the <strong>common_name</strong> is <em>garibaldi</em> or <em>blacksmith</em> or <em>black surfperch</em>.</p>
+<p>Way 1: You can indicate <strong>OR</strong> using the vertical line operator <code>|</code> to indicate “OR”:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">fish_3sp &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(common_name <span class="op">==</span><span class="st"> &quot;garibaldi&quot;</span> <span class="op">|</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb114-3" data-line-number="3"><span class="st">           </span>common_name <span class="op">==</span><span class="st"> &quot;blacksmith&quot;</span> <span class="op">|</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb114-4" data-line-number="4"><span class="st">           </span>common_name <span class="op">==</span><span class="st"> &quot;black surfperch&quot;</span>)</a></code></pre></div>
+<p>Alternatively, if you’re looking for multiple matches in the <em>same variable</em>, you can use the <code>%in%</code> operator instead. Use <code>%in%</code> to ask R to look for <em>any matches</em> within a vector:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">fish_3sp &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(common_name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;garibaldi&quot;</span>, <span class="st">&quot;blacksmith&quot;</span>, <span class="st">&quot;black surfperch&quot;</span>))</a></code></pre></div>
+<p>Notice that the two methods above return the same thing.</p>
+<p><strong>Critical thinking:</strong> In what scenario might you <em>NOT</em> want to use <code>%in%</code> for an “or” filter statement? Hint: What if the “or” conditions aren’t different outcomes for the same variable?</p>
+<div id="activity-5" class="section level4">
+<h4><span class="header-section-number">8.3.3.1</span> Activity</h4>
+<p><strong>Task:</strong> Create a subset from <strong>fish</strong> called <strong>fish_gar_2016</strong> that keeps all observations if the year is 2016 <em>OR</em> the common name is “garibaldi.”</p>
+<p><strong>Solution:</strong></p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">fish_gar_<span class="dv">2016</span> &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> <span class="op">|</span><span class="st"> </span>common_name <span class="op">==</span><span class="st"> &quot;garibaldi&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="filter-to-return-observations-that-match-this-and-that" class="section level3">
+<h3><span class="header-section-number">8.3.4</span> Filter to return observations that match <strong>this</strong> AND <strong>that</strong></h3>
+<p>In the examples above, we learned to keep observations that matched any of a number of conditions (<strong>or</strong> statements).</p>
+<p>Sometimes we’ll only want to keep observations that satisfy multiple conditions (e.g., to keep this observation it must satisfy this condition <strong>AND</strong> that condition). For example, we may want to create a subset that only returns rows from <strong>fish</strong> where the <strong>year</strong> is 2018 <em>and</em> the <strong>site</strong> is Arroyo Quemado “aque”</p>
+<p>In <code>filter()</code>, add a comma (or ampersand ‘&amp;’) between arguments for multiple “and” conditions:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">aque_<span class="dv">2018</span> &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2018</span>, site <span class="op">==</span><span class="st"> &quot;aque&quot;</span>)</a></code></pre></div>
+<p>Check it out to see that only observations where the site is “aque” in 2018 are retained:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">aque_<span class="dv">2018</span></a></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+##    year site  common_name     total_count
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;                 &lt;dbl&gt;
+## 1  2018 aque  black surfperch           2
+## 2  2018 aque  blacksmith                1
+## 3  2018 aque  garibaldi                 1
+## 4  2018 aque  rock wrasse               4
+## 5  2018 aque  senorita                 36</code></pre>
+<p>Like most things in R, there are other ways to do the same thing. For example, you could do the same thing using <code>&amp;</code> (instead of a comma) between “and” conditions:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="co"># Use the ampersand (&amp;) to add another condition &quot;and this must be true&quot;:</span></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb120-3" data-line-number="3">aque_<span class="dv">2018</span> &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb120-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2018</span> <span class="op">&amp;</span><span class="st"> </span>site <span class="op">==</span><span class="st"> &quot;aque&quot;</span>)</a></code></pre></div>
+<p>Or you could just do two filter steps in sequence:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="co"># Written as sequential filter steps:</span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb121-3" data-line-number="3">aque_<span class="dv">2018</span> &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb121-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2018</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb121-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(site <span class="op">==</span><span class="st"> &quot;aque&quot;</span>)</a></code></pre></div>
+</div>
+<div id="activity-combined-filter-conditions" class="section level3">
+<h3><span class="header-section-number">8.3.5</span> Activity: combined filter conditions</h3>
+<p><strong>Challenge task:</strong> Create a subset from the <strong>fish</strong> data frame, called <strong>low_gb_wr</strong> that only contains:</p>
+<ul>
+<li>Observations for <em>garibaldi</em> or <em>rock wrasse</em></li>
+<li>AND the <em>total_count</em> is <em>less than or equal to 10</em></li>
+</ul>
+<p><strong>Solution:</strong></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">low_gb_wr &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(common_name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;garibaldi&quot;</span>, <span class="st">&quot;rock wrasse&quot;</span>), </a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">         total_count <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>)</a></code></pre></div>
+</div>
+<div id="stringrstr_detect-to-filter-by-a-partial-pattern" class="section level3">
+<h3><span class="header-section-number">8.3.6</span> <code>stringr::str_detect()</code> to filter by a partial pattern</h3>
+<p>Sometimes we’ll want to keep observations that contain a specific string pattern within a variable of interest.</p>
+<p>For example, consider the fantasy data below:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+species
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+rainbow rockfish
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+blue rockfish
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+sparkle urchin
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+royal blue fish
+</td>
+</tr>
+</tbody>
+</table>
+<p>There might be a time when we would want to use observations that:</p>
+<ul>
+<li>Contain the string “fish”, in isolation or within a larger string (like “rockfish”)</li>
+<li>Contain the string “blue”</li>
+</ul>
+<p>In those cases, it would be useful to <strong>detect</strong> a string pattern, and potentially keep any rows that contain it. Here, we’ll use <code>stringr::str_detect()</code> to find and keep observations that contain our specified string pattern.</p>
+<p>Let’s detect and keep observations from <strong>fish</strong> where the <strong>common_name</strong> variable contains string pattern “black”. Note that there are two fish, blacksmith and black surfperch, that would satisfy this condition.</p>
+<p>Using <code>filter()</code> + <code>str_detect()</code> in combination to find and keep observations where the <strong>site</strong> variable contains pattern “sc”:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">fish_bl &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(common_name, <span class="dt">pattern =</span> <span class="st">&quot;black&quot;</span>))</a></code></pre></div>
+<p>So <code>str_detect()</code> returns is a series of TRUE/FALSE responses for each row, based on whether or not they contain the specified pattern. In that example, any row that <em>does</em> contain “black” returns <code>TRUE</code>, and any row that <em>does not</em> contain “black” returns <code>FALSE</code>.</p>
+</div>
+<div id="activity-6" class="section level3">
+<h3><span class="header-section-number">8.3.7</span> Activity</h3>
+<p><strong>Task:</strong> Create a new object called <strong>fish_it</strong>, starting from <strong>fish</strong>, that only contains observations if the <strong>common_name</strong> variable contains the string pattern “it”. What species remain?</p>
+<p><strong>Solution:</strong></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">fish_it &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(common_name, <span class="dt">pattern =</span> <span class="st">&quot;it&quot;</span>))</a>
+<a class="sourceLine" id="cb124-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb124-4" data-line-number="4"><span class="co"># blacksmITh and senorITa remain!</span></a></code></pre></div>
+<p>We can also <em>exclude</em> observations that contain a set string pattern by adding the <code>negate = TRUE</code> argument within <code>str_detect()</code>.</p>
+<p><strong>Sync your local project to your repo on GitHub.</strong></p>
+</div>
+</div>
+<div id="dplyr_join-to-merge-data-frames" class="section level2">
+<h2><span class="header-section-number">8.4</span> <code>dplyr::*_join()</code> to merge data frames</h2>
+<p>There are a number of ways to merge data frames in R. We’ll use <code>full_join()</code>, <code>left_join()</code>, and <code>inner_join()</code> in this session.</p>
+<p>From R Documentation (<code>?join</code>):</p>
+<ul>
+<li><p><code>full_join()</code>: “returns all rows and all columns from both x and y. Where there are not matching values, returns NA for the one missing.” Basically, nothing gets thrown out, even if a match doesn’t exist - making <code>full_join()</code> the safest option for merging data frames. When in doubt, <code>full_join()</code>.</p></li>
+<li><p><code>left_join()</code>: “return all rows from x, and all columns from x and y. Rows in x with no match in y will have NA values in the new columns. If there are multiple matches between x and y, all combinations of the matches are returned.”</p></li>
+<li><p><code>inner_join()</code>: “returns all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned.” This will drop observations that don’t have a match between the merged data frames, which makes it a riskier merging option if you’re not sure what you’re trying to do.</p></li>
+</ul>
+<p>Schematic (from RStudio data wrangling cheat sheet):
+<img src="img/rstudio-cheatsheet-combine-options1.png" /></p>
+<p>We will use <strong>kelp_abur</strong> as our “left” data frame, and <strong>fish</strong> as our “right” data frame, to explore different join outcomes.</p>
+<div id="full_join-to-merge-data-frames-keeping-everything" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> <code>full_join()</code> to merge data frames, keeping everything</h3>
+<p>When we join data frames in R, we need to tell R a couple of things (and it does the hard joining work for us):</p>
+<ul>
+<li>Which data frames we want to merge together</li>
+<li>Which variables to merge by</li>
+</ul>
+<p>Use <code>full_join()</code> to safely combine two data frames, keeping everything from both and populating with <code>NA</code> as necessary.</p>
+<p>Example: use <code>full_join()</code> to combine <strong>kelp_abur</strong> and <strong>fish</strong>:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">abur_kelp_fish &lt;-<span class="st"> </span>kelp_abur <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="st">  </span><span class="kw">full_join</span>(fish, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;site&quot;</span>)) </a></code></pre></div>
+<p>Let’s look at the merged data frame with <code>View(abur_kelp_fish)</code>. A few things to notice about how <code>full_join()</code> has worked:</p>
+<ol style="list-style-type: decimal">
+<li>All columns that existed in <strong>both data frames</strong> still exist</li>
+<li>All observations are retained, even if they don’t have a match. In this case, notice that for other sites (not ‘abur’) the observation for fish still exists, even though there was no corresponding kelp data to merge with it.</li>
+<li>The kelp frond data is joined to <em>all observations</em> where the joining variables (<em>year</em>, <em>site</em>) are a match, which is why it is repeated 5 times for each year (once for each fish species).</li>
+</ol>
+<p>Because all data (observations &amp; columns) are retained, <code>full_join()</code> is the safest option if you’re unclear about how to merge data frames.</p>
+</div>
+<div id="left_joinxy-to-merge-data-frames-keeping-everything-in-the-x-data-frame-and-only-matches-from-the-y-data-frame" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> <code>left_join(x,y)</code> to merge data frames, keeping everything in the ‘x’ data frame and only matches from the ‘y’ data frame</h3>
+<p>Now, we want to keep all observations in <em>kelp_abur</em>, and merge them with <em>fish</em> while only keeping observations from <em>fish</em> that match an observation within <em>abur</em>. When we use <code>left_join()</code>, any information from <em>fish</em> that don’t have a match (by year and site) in <em>kelp_abur</em> won’t be retained, because those wouldn’t have a match in the left data frame.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">kelp_fish_left &lt;-<span class="st"> </span>kelp_abur <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(fish, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>,<span class="st">&quot;site&quot;</span>))</a></code></pre></div>
+<p>Notice when you look at <strong>kelp_fish_left</strong>, data for other sites that exist in fish do <strong>not</strong> get joined, because <code>left_join(df_a, df_b)</code> will only keep observations from <code>df_b</code> if they have a match in <code>df_a</code>!</p>
+</div>
+<div id="inner_join-to-merge-data-frames-only-keeping-observations-with-a-match-in-both" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> <code>inner_join()</code> to merge data frames, only keeping observations with a match in <strong>both</strong></h3>
+<p>Use <code>inner_join()</code> if you <strong>only</strong> want to retain observations that have matches across <strong>both data</strong> frames. Caution: this is built to exclude any observations that don’t match across data frames by joined variables - double check to make sure this is actually what you want to do!</p>
+<p>For example, if we use <code>inner_join()</code> to merge fish and kelp_abur, then we are asking R to <strong>only return observations where the joining variables (<em>year</em> and <em>site</em>) have matches in both data frames.</strong> Let’s see what the outcome is:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">kelp_fish_injoin &lt;-<span class="st"> </span>kelp_abur <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(fish, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;site&quot;</span>))</a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb127-4" data-line-number="4"><span class="co"># kelp_fish_injoin</span></a></code></pre></div>
+<p>Here, we see that only observations (rows) where there is a match for <em>year</em> and <em>site</em> in both data frames are returned.</p>
+</div>
+<div id="filter-and-join-in-a-sequence" class="section level3">
+<h3><span class="header-section-number">8.4.4</span> <code>filter()</code> and <code>join()</code> in a sequence</h3>
+<p>Now let’s combine what we’ve learned about piping, filtering and joining!</p>
+<p>Let’s complete the following as part of a single sequence (remember, check to see what you’ve produced after each step) to create a new data frame called <strong>my_fish_join</strong>:</p>
+<ul>
+<li>Start with <strong>fish</strong> data frame</li>
+<li>Filter <strong>fish</strong> to only including observations for 2017 at Arroyo Burro</li>
+<li>Join the <strong>kelp_abur</strong> data frame to the resulting subset using <code>left_join()</code></li>
+<li>Add a new column that contains the ‘fish per kelp fronds’ density (total_count / total_fronds)</li>
+</ul>
+<p>That sequence might look like this:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">my_fish_join &lt;-<span class="st"> </span>fish <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2017</span>, site <span class="op">==</span><span class="st"> &quot;abur&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb128-3" data-line-number="3"><span class="st">  </span><span class="kw">left_join</span>(kelp_abur, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;site&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb128-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">fish_per_frond =</span> total_count <span class="op">/</span><span class="st"> </span>total_fronds)</a></code></pre></div>
+<p>Explore the resulting <strong>my_fish_join</strong> data frame.</p>
+</div>
+</div>
+<div id="an-html-table-with-kable-and-kableextra" class="section level2">
+<h2><span class="header-section-number">8.5</span> An HTML table with <code>kable()</code> and <code>kableExtra</code></h2>
+<p>With any data frame, you can a nicer looking table in your knitted HTML using <code>knitr::kable()</code> and functions in the <code>kableExtra</code> package.</p>
+<p>Start by using <code>kable()</code> with my_fish_join, and see what the default HTML table looks like in your knitted document:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">kable</span>(my_fish_join)</a></code></pre></div>
+<p>Simple, but quick to get a clear &amp; useful table! Now let’s spruce it up a bit with <code>kableExtra::kable_styling()</code> to modify HTML table styles:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">my_fish_join <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </a>
+<a class="sourceLine" id="cb130-4" data-line-number="4">                <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>…with many other options for customizing HTML tables! Make sure to check out <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">“Create awesome HTML tables with knitr::kable() and kableExtra” by Hao Zhu</a> for more examples and options.</p>
+<p><strong>Sync your project with your repo on GitHub</strong></p>
+<div id="end-filter-_join-section" class="section level3">
+<h3><span class="header-section-number">8.5.1</span> End <code>filter()</code> + <code>_join()</code> section!</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidying.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="collaborating.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R for Excel Users.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
