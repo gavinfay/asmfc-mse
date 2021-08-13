@@ -1,3 +1,3 @@
 welcome
 agenda
-prerequisites
+r-rstudio-on-own-machine

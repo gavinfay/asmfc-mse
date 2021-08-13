@@ -71,14 +71,55 @@ _(subject to change)_
 
 
 
-## Prerequisites
+## Pre-workshop preparations (15 minutes) {.unnumbered}
 
-<!-- Before the training, please do the following (20 minutes). All software is free.  -->
+The workshop will be run via Zoom, and we will be using a GoogleDoc for shared note taking and interaction during the sessions.   Breakout sessions and analytical components will be conducted using R.  
 
-<!-- 1. **Download and install R and RStudio** -->
-<!--     - R: <https://cloud.r-project.org/> -->
-<!--     - RStudio: <http://www.rstudio.com/download>  -->
-<!--     - Follow your operating system's normal installation process -->
+For R, there are two options: either have R & RStudio downloaded on your machine, or use a RStudio Cloud project created for this workshop (recommended).  
+
+Why RStudio Cloud? We want to maximize time during our workshop for learning, and not on tech support. Using a standard way of interacting with the course material makes this easier, and avoids the hassles of multiple installation types, versions of R, etc. However, you may wish to set up R and RStudio on your local machine, so information about required packages will be posted below.    
+### RStudio Cloud
+
+Before the workshop, please visit [Rstudio Cloud](https://rstudio.cloud) and create a free account.  
+Free accounts give limited usage, but are more than enough for these workshops.  
+
+Instructions for how to navigate to our RStudio Cloud project and set up the project so you can work on the exercises in your own web browser can be found here.
+[RStudio Cloud set up guide & instructions](https://github.com/gavinfay/asmfc-mse/issues/1)
+
+### R & RStudio on own machine
+
+**Download and install R and RStudio**
+- R: <https://cloud.r-project.org/>
+- RStudio: <http://www.rstudio.com/download>
+- Follow your operating system's normal installation process
+
+**Getting the workshop materials to your computer**
+You can create a R Studio project from the github repository for the workshop.  
+[RStudio project set up guide](https://github.com/gavinfay/asmfc-mse/issues/2)
+
+**R Packages used**
+If not using the RStudio Cloud project, we will be using the following R packages and you can install them on your local machine ahead of time by running the below code in the R console (copy & paste).  
+
+```{r eval=FALSE}
+pkgs_to_use <- c("tidyverse",
+                 "palmerpenguins",
+                 "furrr",
+                 "MASS",
+                 "janitor",
+                 "skimr")
+install.packages(setdiff(pkgs_to_use, rownames(installed.packages())))  
+```
+
+
+## Code of Conduct {.unnumbered}
+
+These workshops follow the [Fay Lab code of conduct:](https://thefaylab.github.io/lab-manual/code)
+
+
+## Licensing {.unnumbered}
+
+All materials are released with [Creative Commons Attribution Share Alike 4.0 International](LICENSE.md) license.
+
 
 <!-- 1. **Download workshop data**  -->
 <!--     - Google Drive folder: [r-for-excel-data ](https://drive.google.com/drive/folders/1RywSUw8hxETlROdIhLIntxPsZq0tKSdS?usp=sharing) -->
