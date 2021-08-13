@@ -1,3 +1,0 @@
-welcome
-agenda
-r-rstudio-on-own-machine
