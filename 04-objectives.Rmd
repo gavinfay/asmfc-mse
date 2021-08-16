@@ -1,0 +1,13 @@
+# Objectives & Performance Metrics {#objectives}
+
+(Tuesday 3-5)
+
+## Management Objectives & Metrics
+
+::: {.slide-deck}
+**Objectives & Performance metrics**
+
+::: {.slides}
+[Slides](https://docs.google.com/presentation/d/1plPWxrybwQnZoIlfZri72wSp_muoasZ-rweagUkk1oU/edit?usp=sharing)
+:::
+:::

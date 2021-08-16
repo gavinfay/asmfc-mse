@@ -52,21 +52,21 @@ _(subject to change)_
 |Day|Time|Topic|
 |:--|:----|:---------|
 | M | 1-2:30  | [What is MSE? (lecture & MSE game)](#intro) |
-| M | 3-5 |  My first MSE (R: intro exercise) |
-| T | 9-10  | designing operating models (lecture) |
-| T | 10:30-12 | coding & implementing OMs (R lab breakouts, discussion) |
-| T | 1-2:30 | selecting management strategies (lecture, R: comparing HCRs) |
-| T | 3-5 | Objectives & Performance metrics (lecture, R lab) |
-| W | 9-10 | Stakeholder engagement (lecture/discussion) |
-| W | 10:30-12 | Case studies: developing objectives & candidate strategies for ASMFC examples (breakout exercise) |
-| W | 1-2 | Case study review. Relevant OM & HCR needs. |
-| W | 2-3 | breakout group coding on case study 'projects' |
-| W | 3:30-5 | Presenting results to managers (lecture, R exercise) |
+| M | 3-5 |  [My first MSE (R: intro exercise)](#first-mse) |
+| T | 9-10  | [designing operating models (lecture)](#op-mods) |
+| T | 10:30-12 | [coding & implementing OMs (R lab breakouts, discussion)](#coding-oms) |
+| T | 1-2:30 | [selecting management strategies (lecture, R: comparing HCRs)](#management-strategies) |
+| T | 3-5 | [Objectives & Performance metrics (lecture, R lab)](#objectives) |
+| W | 9-10 | [Stakeholder engagement (lecture/discussion)](#stakeholders) |
+| W | 10:30-12 | [Case studies: developing objectives & candidate strategies for ASMFC examples (breakout exercise)](#case-studies) |
+| W | 1-2 | [Case study review. Relevant OM & HCR needs.](#project-needs) |
+| W | 2-3 | breakout group coding on case study projects |
+| W | 3:30-5 | [Presenting results to managers (lecture, R exercise)](#communication) |
 | Th | 9-10 | OM and EMs revisited (lecture, live code) |
 | Th | 10:30-12 | Implementation error (lecture, R exercise) |
 | Th | 1-2:30 | Case study project work time |
-| Th | 3-5 | multispecies MSEs (lecture, R exercise) |
-| F | 9-10 | Coupled system MSEs |
+| Th | 3-5 | [multispecies MSEs (lecture, R exercise)](#ecosystem-mse) |
+| F | 9-10 | [Coupled system MSEs](#system-mse) |
 | F | 10:30-12 | Case study project summaries, Workshop review |
 
 

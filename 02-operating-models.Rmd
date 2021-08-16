@@ -1,0 +1,18 @@
+# Operating Models  {#op-mods}
+
+(Tuesday 9-10, 10:30-12)
+(Thursday 9-10, 10:30-12)
+
+## Designing Operating Models
+
+::: {.slide-deck}
+**Developing Operating Models**
+
+::: {.slides}
+[Slides](https://docs.google.com/presentation/d/1B_Qsv02g6HhxoeprYFOafJwRXlZU620LsHZEa_QpgiA/edit?usp=sharing)
+:::
+:::
+
+
+## Implementing Operating Models {#coding-oms}
+

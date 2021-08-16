@@ -1,0 +1,27 @@
+# Ecosystem MSEs  {#ecosystem-mse}
+
+(Thursday 3-5)
+(Friday 9-10)
+
+Management strategy evaluation for Ecosystem Based Fisheries Management and beyond....
+
+## Multispecies MSEs
+
+::: {.slide-deck}
+**Multispecies MSEs**
+
+::: {.slides}
+[Slides](https://docs.google.com/presentation/d/1TcIwX8F9wiwAUlPytIBmSQsSVdf1bInKOQx7Uenofzc/edit?usp=sharing)
+:::
+:::
+
+
+## Coupled System MSEs {#system-mse}
+
+::: {.slide-deck}
+**Multispecies MSEs**
+
+::: {.slides}
+[Slides](https://docs.google.com/presentation/d/1Lu5QvSybBRvMJ66e8akRmRDXl9iV6h-QkgEprBU4Kn4/edit?usp=sharing)
+:::
+:::

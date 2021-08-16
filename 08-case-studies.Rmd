@@ -1,0 +1,33 @@
+# Case Study Projects  {#case-studies}
+
+(Wednesday 10:30-12, 1-2, 2-3)
+(Thursday 1-2:30)
+(Friday 10:30-11:30)
+
+For part of the course we will split into groups to develop several case study MSE projects, to practice building and running MSE analyses. Case studies will be based on stocks relevant to course attendees, and our workshop time will include discussions about relevant modeling features, research questions, and stucturing of model scenarios.  
+Each group will select a small number of scenarios to test and present summaries of comparisons at the close of the workshop.  
+These case study projects are meant to provide practical experience with MSE technical analyses but it is encouraged to not make them too complicated, they needn't reflect every nuance or complexity associated with management of the chosen stock/population.  
+
+## Developing objectives & candidate strategies for ASMFC examples
+
+## Relevant OM & HCR needs for case studies {#project-needs}
+
+## Breakout group project coding episode 1 {#project-coding1}
+
+## Breakout group project coding episode 2 {#project-coding2}
+
+## Project Summaries {#project-summaries}
+
+
+
+
+
+
+::: {.slide-deck}
+**Developing Operating Models**
+
+::: {.slides}
+[Slides](https://docs.google.com/presentation/d/1B_Qsv02g6HhxoeprYFOafJwRXlZU620LsHZEa_QpgiA/edit?usp=sharing)
+:::
+:::
+
