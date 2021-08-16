@@ -39,12 +39,16 @@ An introduction to MSE, including a web-based 'toy' MSE app to overview the comp
 ::: {.application-exercise} 
 **My first MSE (R tutorial / exercise)**
 
+The best way to interact with the tutorial is through [RStudio](https://github.com/gavinfay/asmfc-mse/issues/2) or [RStudio Cloud](https://github.com/gavinfay/asmfc-mse/issues/1).
+
+
 ::: {.source}
-[R Markdown]()
+[R Markdown](www.github.com/gavinfay/asmfc-mse/materials/exercises/day-01/my-first-mse.Rmd)
 :::
 
 ::: {.tutorial}
-[knitted html]()
+[knitted html](www.github.com/gavinfay/asmfc-mse/materials/exercises/day-01/my-first-mse.html)
+[knitted html](https://gavinfay.github.io/asmfc-mse/materials/exercises/day-01/my-first-mse.html)
 :::
 
 :::
