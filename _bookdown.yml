@@ -3,8 +3,8 @@ language:
   ui:
     chapter_name: "Chapter "
 rmd_files: [
-  "index.Rmd"
-  #"overview.Rmd", # session 1
+  "index.Rmd",
+  "01-intro-mse.Rmd" # session 1
   #"rstudio.Rmd", # session 1
   #"github.Rmd", # session 2
   #"ggplot2.Rmd", # session 3
