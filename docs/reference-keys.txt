@@ -18,6 +18,3 @@ system-mse
 case-studies
 developing-objectives-candidate-strategies-for-asmfc-examples
 project-needs
-project-coding1
-project-coding2
-project-summaries

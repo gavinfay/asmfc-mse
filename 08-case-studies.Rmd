@@ -12,11 +12,11 @@ These case study projects are meant to provide practical experience with MSE tec
 
 ## Relevant OM & HCR needs for case studies {#project-needs}
 
-## Breakout group project coding episode 1 {#project-coding1}
+## Breakout group project coding episode 1 {#project-coding1 .unnumbered}
 
-## Breakout group project coding episode 2 {#project-coding2}
+## Breakout group project coding episode 2 {#project-coding2 .unnumbered}
 
-## Project Summaries {#project-summaries}
+## Project Summaries {#project-summaries .unnumbered}
 
 
 
