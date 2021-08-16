@@ -43,12 +43,11 @@ The best way to interact with the tutorial is through [RStudio](https://github.c
 
 
 ::: {.source}
-[R Markdown](www.github.com/gavinfay/asmfc-mse/materials/exercises/day-01/my-first-mse.Rmd)
+[R Markdown](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-01/my-first-mse.Rmd)
 :::
 
 ::: {.tutorial}
-[knitted html](www.github.com/gavinfay/asmfc-mse/materials/exercises/day-01/my-first-mse.html)
-[knitted html](https://gavinfay.github.io/asmfc-mse/materials/exercises/day-01/my-first-mse.html)
+[knitted html](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-01/my-first-mse)
 :::
 
 :::
