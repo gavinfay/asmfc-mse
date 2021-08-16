@@ -47,7 +47,7 @@ The best way to interact with the tutorial is through [RStudio](https://github.c
 :::
 
 ::: {.tutorial}
-[knitted html](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-01/my-first-mse)
+[knitted pdf](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-01/my-first-mse.pdf)
 :::
 
 :::

@@ -2,7 +2,7 @@
 title: "ASMFC MSE Workshop: First MSE"
 author: "Gavin Fay"
 date: "August 2021"
-output: html_document
+output: pdf_document
 ---
 
 
