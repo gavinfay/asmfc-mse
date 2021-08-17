@@ -1,0 +1,94 @@
+---
+title: "ASMFC MSE Workshop: Alternative Operating Models"
+author: "Gavin Fay"
+date: "August 2021"
+output: pdf_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Operating Model uncertainty
+
+In the previous example we characterized OM uncertainty using paramter uncertainty in the fit to the original data.
+
+Here we will compare the performance of our simple HCRs given operating model structure uncertainty.
+
+1. Build a function for when the operating model dynamics are governed by the Pella-Tomlinson model (i.e. yield function is not symmetric)
+2. Compare the performance of our HCRs from day 1 to both OMs
+
+_Stretch-goal_ 
+
+3. Develop an OM that includes process error (recruitment variabilty?) in the population dynamics
+
+
+#### first load packages
+ 
+```{r, results='hide'}
+#install.packages('ggplot2')
+library(ggplot2)
+library(Hmisc)
+library(mvtnorm)
+```
+
+#### load the functions we used yesterday
+(sourced from a script to make things easy and reduce clutter in this document)
+```{r}
+source("first-mse-functions.R")
+#e.g
+schaefer
+```
+
+#### The Operating Model  
+
+The population dynamics for the operating model (the 'real' dynamics) are governed by the Pella-Tomlinson equation:  
+$$ B_{y+1} = B_y + B_y * r * \left(1 - \left(\frac{B_y}{K} \right)^{m-1} \right) - C_y $$
+where $B_y$ is the biomass in year $y$,
+$C_y$ is the catch in year $y$,
+$r$ is the population intrinsic growth rate,
+$K$ is the population carrying capacity, and
+$m$ is a shape parameter that determines the location of BMSY.  
+
+First task is to create a function for the P-T dynamics
+(hint modify the schaefer function that we used yesterday. Remember there is an extra parameter)
+```{r}
+
+schaefer <- function(B,C,K,r) {
+  #function schaefer takes the current biomass, a catch, 
+  #and the model parameters to compute next year's biomass
+  res <- B + B * r * (1 - B/K) - C
+  return(max(0.001,res))  # we add a constraint to prevent negative biomass
+}
+
+
+```
+
+Once you have this, condition your OM as yesterday but with a fixed value for the shape parameter of 1.2
+(Hint, you will want to adjust the biomass projection to use your new function)
+
+```{r}
+
+```
+
+
+Then perform the MSE evaluation given the new OM. 
+For this morning, use just one HCR, e.g.
+```{r}
+control.pars <- list()
+control.pars$H1 <- 0.05
+control.pars$H2 <- 0
+control.pars$Bmax <- max(index, na.rm =TRUE)
+control.pars$B2 <- 0.2*control.pars$Bmax
+control.pars$B1 <- 0.5*control.pars$Bmax
+```
+```{r}
+# you will want to make sure you are using your revised functions
+proj.hcr1.noerror <- evaluate(pars.iter, biomass.iter,
+                          control.pars, data.years,
+                          proj.years, niter,
+                          overshoot = 0)
+```
+
+Compare output with the Schaefer model runs done yesterday/this morning.
