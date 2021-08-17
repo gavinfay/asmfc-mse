@@ -83,7 +83,7 @@ control.pars$Bmax <- max(index, na.rm =TRUE)
 control.pars$B2 <- 0.2*control.pars$Bmax
 control.pars$B1 <- 0.5*control.pars$Bmax
 ```
-```{r}
+```{r eval=FALSE}
 # you will want to make sure you are using your revised functions
 proj.hcr1.noerror <- evaluate(pars.iter, biomass.iter,
                           control.pars, data.years,

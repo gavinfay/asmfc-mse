@@ -3,6 +3,7 @@ intro
 what-is-mse
 first-mse
 op-mods
+my-first-mse-revisited
 designing-operating-models
 coding-oms
 management

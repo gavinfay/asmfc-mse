@@ -111,7 +111,10 @@ pkgs_to_use <- c("tidyverse",
                  "furrr",
                  "MASS",
                  "janitor",
-                 "skimr")
+                 "skimr",
+                 "Hmisc",
+                 "mvtnorm",
+                 "bookdown")
 install.packages(setdiff(pkgs_to_use, rownames(installed.packages())))  
 ```
 
