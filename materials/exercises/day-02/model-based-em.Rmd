@@ -1,0 +1,56 @@
+---
+title: "ASMFC MSE Workshop: Model-based Estimation Model"
+author: "Gavin Fay"
+date: "August 2021"
+output: pdf_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Replacing our assessment with an estimation model
+
+In the previous examples we used our survey index as the estimate of abundance.
+
+Here we will instead use a model-based estimator, and fit a Schaefer model to the data from the OM to estimate MSY reference points for use in the control rule.
+(hint we can reuse the code we developed to condition the OM)
+
+1. Build a function for fitting an estimation model to the index.i time series (don't fit to the future time steps that haven't happened yet)
+2. Calculate the TAC based on the last year's (model-estiamted) biomass and the estimate of FMSY (r/2) from the fitted model.
+3. run a FMSY based control rule
+
+_Stretch-goal_ 
+
+4. Compare the performance of the EM-based strategy when the OM is the Pella-Tomlinson model.
+
+
+#### first load packages
+ 
+```{r, results='hide'}
+#install.packages('ggplot2')
+library(ggplot2)
+library(Hmisc)
+library(mvtnorm)
+```
+
+#### load the functions we used yesterday
+(sourced from a script to make things easy and reduce clutter in this document)
+```{r}
+source("first-mse-functions.R")
+```
+
+
+First task is to create a function for the estimation moodel that will use the index data and call the 'assess()' function.
+```{r}
+
+```
+
+
+
+Also adjust the control rule to take the results of the EM
+```{r}
+control
+
+```
