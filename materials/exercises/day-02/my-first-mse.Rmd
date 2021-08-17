@@ -170,6 +170,7 @@ ini.parms <- c(log(1200), 0.1, 0.3)
 Fit the logistic model to data:  
 ```{r}
 redfish <- assess(harvest,index,calc.vcov=TRUE,ini.parms)
+redfish
 ```
 
 Extract the maximum likelihood and parameter estimates  
@@ -205,6 +206,7 @@ for (i in 1:niter) {
                                    biomass = dynamics(pars.iter[i,], harvest),
                                    iter = i))
 }
+biomass.iter
 ```
 
 
@@ -348,7 +350,9 @@ We will first step through this for one iteration to view how things work.
                    data.frame(year = yrs[-length(yrs)],
                               value = catch.i, type = "catch", iter=i),
                    data.frame(year = yrs, value = biomass.i,
-                              type= "biomass", iter=i)) 
+                              type= "biomass", iter=i),
+                   data.frame(year = yrs[-length(yrs)],
+                              value = TAC.i, type = "tac", iter=i)) 
     #end loop over iterations
     #}
     #return(res)
@@ -411,7 +415,9 @@ evaluate <- function(pars.iter, biomass.iter,
                    data.frame(year = yrs[-length(yrs)],
                               value = catch.i, type = "catch", iter=i),
                    data.frame(year = yrs, value = biomass.i,
-                              type= "biomass", iter=i)) 
+                              type= "biomass", iter=i),
+                   data.frame(year = yrs[-length(yrs)],
+                              value = TAC.i, type = "tac", iter=i)) 
     #end loop over iterations
     }
     return(res)
@@ -438,17 +444,16 @@ projection.plot <- function(project.results) {
            geom_line(aes(y=value,x=year),data = subset(project.results, type != "index" & iter==2 & year %in% proj.years), lty=1,lwd=1,col=gray(0.7)) +
            geom_line(aes(y=value,x=year),data = subset(project.results, type != "index" & iter==3 & year %in% proj.years), lty=1,lwd=1,col=gray(0.7)) +
 stat_summary(fun.data = "median_hilow", geom = "smooth", col="black",
-                    lty = 2) +
+                    fill = gray(0.5), lty = 2, aes=0.1) +
        stat_summary(fun = median, fun.min = function(x)0, geom="line",
-                    data = subset(project.results, type != "index" & 
-                                  year %in% data.years), lwd=1) +facet_wrap(~type, scale = "free_y") + ylab("Million tonnes") + theme_bw()
+                    data = subset(project.results, type != "index" &  year %in% data.years), lwd=1) +facet_wrap(~type, scale = "free_y") + ylab("Million tonnes") + theme_bw()
       
 }
 ```
 
 Plot the projection:  
 ```{r}
-projection.plot(project.fixed)
+projection.plot(dplyr::filter(project.fixed, type != "tac"))
 ```
 
 
@@ -492,7 +497,7 @@ Plot the HCR shape:
 ```{r}
 plot(c(0,control.pars$B2,control.pars$B1,control.pars$Bmax),
      c(control.pars$H2,control.pars$H2,control.pars$H1,control.pars$H1),
-     type='l',axes=F,xlab="biomass",ylab="exploitation rate",
+     type='l',axes=F,xlab="estimated biomass",ylab="exploitation rate",
      ylim=c(0,1.2*control.pars$H1))
 axis(1,at=c(control.pars$B2,control.pars$B1),labels=c("B2","B1"))
 axis(2,at=c(control.pars$H2,control.pars$H1),labels=c("H2","H1"))
