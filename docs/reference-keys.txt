@@ -9,6 +9,7 @@ coding-oms
 management
 selecting-management-strategies
 objectives
+walk-through-of-day-2-exercises
 management-objectives-metrics
 stakeholders
 communication

@@ -1,6 +1,34 @@
 # Objectives & Performance Metrics {#objectives}
 
-(Tuesday 3-5)
+## Walk-through of day 2 exercises
+
+::: {.application-exercise} 
+**Alternative operating model dynamics**
+
+::: {.source}
+[R Markdown](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-03/alternative-oms.Rmd)
+:::
+
+::: {.tutorial}
+[knitted pdf](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-03/alternative-oms.pdf)
+:::
+
+:::
+
+::: {.application-exercise} 
+**Model-based management strategy**
+
+::: {.source}
+[R Markdown](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-03/model-based-em.Rmd)
+:::
+
+::: {.tutorial}
+[knitted pdf](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-03/model-based-em.pdf)
+:::
+
+:::
+
+
 
 ## Management Objectives & Metrics
 
