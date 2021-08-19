@@ -65,11 +65,12 @@ _(subject to change)_
 | W | 2-2:45 | [Case study review. Relevant OM & HCR needs.](#project-needs) |
 | W | 3-4 | breakout group coding on case study projects |
 | W | 4-5 | [Presenting results to managers (lecture)](#communication) |
-| Th | 9-10 | OM and EMs revisited (lecture, live code) |
-| Th | 10:30-12 | Implementation error (lecture, R exercise) |
-| Th | 1-2:30 | Case study project work time |
+| Th | 9-10 | [OM and EMs revisited (lecture, live code)](#oms-revisited) |
+| Th | 10:15-12 | Case study project work time |
+| Th | 1-2 | [Implementation error (lecture)](#implementation) |
+| Th | 2-3 | Case study project work time |
 | Th | 3-5 | [multispecies MSEs (lecture, R exercise)](#ecosystem-mse) |
-| F | 9-10 | [Coupled system MSEs](#system-mse) |
+| F | 9-10 | [Coupled system MSEs?](#system-mse) |
 | F | 10:30-12 | Case study project summaries, Workshop review |
 
 
@@ -117,7 +118,8 @@ pkgs_to_use <- c("tidyverse",
                  "skimr",
                  "Hmisc",
                  "mvtnorm",
-                 "bookdown")
+                 "bookdown",
+                 "RcppRoll")
 install.packages(setdiff(pkgs_to_use, rownames(installed.packages())))  
 ```
 

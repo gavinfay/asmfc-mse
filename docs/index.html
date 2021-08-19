@@ -24,7 +24,7 @@
 <meta name="author" content="Gavin Fay" />
 
 
-<meta name="date" content="2021-08-18" />
+<meta name="date" content="2021-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,6 +160,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="op-mods.html"><a href="op-mods.html#my-first-mse-revisited"><i class="fa fa-check"></i><b>3.1</b> My first MSE revisited</a></li>
 <li class="chapter" data-level="3.2" data-path="op-mods.html"><a href="op-mods.html#designing-operating-models"><i class="fa fa-check"></i><b>3.2</b> Designing Operating Models</a></li>
 <li class="chapter" data-level="3.3" data-path="op-mods.html"><a href="op-mods.html#coding-oms"><i class="fa fa-check"></i><b>3.3</b> Implementing Operating Models</a></li>
+<li class="chapter" data-level="3.4" data-path="op-mods.html"><a href="op-mods.html#oms-revisited"><i class="fa fa-check"></i><b>3.4</b> Additional Operating Model considerations</a></li>
+<li class="chapter" data-level="3.5" data-path="op-mods.html"><a href="op-mods.html#implementation"><i class="fa fa-check"></i><b>3.5</b> Policy testing with constraints - adding Implementation Error</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="management.html"><a href="management.html"><i class="fa fa-check"></i><b>4</b> Management Strategies</a>
 <ul>
@@ -211,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Introduction to Management Strategy Evaluation</h1>
 <p class="author"><em>Gavin Fay</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-08-18</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-08-19</em></p>
 </div>
 <div id="welcome" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Welcome</h1>
@@ -328,29 +330,34 @@ The primary focus of the workshop will be on the technical analysis components o
 <tr class="odd">
 <td align="left">Th</td>
 <td align="left">9-10</td>
-<td align="left">OM and EMs revisited (lecture, live code)</td>
+<td align="left"><a href="op-mods.html#oms-revisited">OM and EMs revisited (lecture, live code)</a></td>
 </tr>
 <tr class="even">
 <td align="left">Th</td>
-<td align="left">10:30-12</td>
-<td align="left">Implementation error (lecture, R exercise)</td>
+<td align="left">10:15-12</td>
+<td align="left">Case study project work time</td>
 </tr>
 <tr class="odd">
 <td align="left">Th</td>
-<td align="left">1-2:30</td>
-<td align="left">Case study project work time</td>
+<td align="left">1-2</td>
+<td align="left"><a href="op-mods.html#implementation">Implementation error (lecture)</a></td>
 </tr>
 <tr class="even">
+<td align="left">Th</td>
+<td align="left">2-3</td>
+<td align="left">Case study project work time</td>
+</tr>
+<tr class="odd">
 <td align="left">Th</td>
 <td align="left">3-5</td>
 <td align="left"><a href="ecosystem-mse.html#ecosystem-mse">multispecies MSEs (lecture, R exercise)</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">F</td>
 <td align="left">9-10</td>
-<td align="left"><a href="ecosystem-mse.html#system-mse">Coupled system MSEs</a></td>
+<td align="left"><a href="ecosystem-mse.html#system-mse">Coupled system MSEs?</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">F</td>
 <td align="left">10:30-12</td>
 <td align="left">Case study project summaries, Workshop review</td>
@@ -390,8 +397,9 @@ If not using the RStudio Cloud project, we will be using the following R package
 <span id="cb1-6"><a href="index.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;skimr&quot;</span>,</span>
 <span id="cb1-7"><a href="index.html#cb1-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;Hmisc&quot;</span>,</span>
 <span id="cb1-8"><a href="index.html#cb1-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;mvtnorm&quot;</span>,</span>
-<span id="cb1-9"><a href="index.html#cb1-9" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;bookdown&quot;</span>)</span>
-<span id="cb1-10"><a href="index.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(pkgs_to_use, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))  </span></code></pre></div>
+<span id="cb1-9"><a href="index.html#cb1-9" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;bookdown&quot;</span>,</span>
+<span id="cb1-10"><a href="index.html#cb1-10" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;RcppRoll&quot;</span>)</span>
+<span id="cb1-11"><a href="index.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(pkgs_to_use, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))  </span></code></pre></div>
 </div>
 </div>
 <div id="code-of-conduct" class="section level2 unnumbered">

@@ -6,6 +6,8 @@ op-mods
 my-first-mse-revisited
 designing-operating-models
 coding-oms
+oms-revisited
+implementation
 management
 selecting-management-strategies
 objectives

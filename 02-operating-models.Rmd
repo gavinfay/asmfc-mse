@@ -50,3 +50,39 @@ The best way to interact with the tutorial is through [RStudio](https://github.c
 
 :::
 
+
+## Additional Operating Model considerations {#oms-revisited}
+
+::: {.slide-deck}
+**OMs revisited**
+
+::: {.slides}
+[Slides](https://docs.google.com/presentation/d/1JjH54uhIPchX-0QqmUUkWRJZoeBu7FNdvIkeSwfZyGQ/edit?usp=sharing)
+:::
+:::
+
+::: {.application-exercise} 
+**Organizing your analyses, towards a {tidymse}**
+
+::: {.source}
+[R Markdown](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-04/age-structure-om.Rmd)
+:::
+
+::: {.tutorial}
+[knitted pdf](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-04/age-structure-om.pdf)
+:::
+
+:::
+
+
+## Policy testing with constraints - adding Implementation Error {#implementation}
+
+::: {.slide-deck}
+**Implementation error**
+
+::: {.slides}
+[Slides]https://docs.google.com/presentation/d/1nUEOReOiAW9G7X7qJmcfFOJWXyIc0_27BrMPTjec9sE/edit?usp=sharing
+:::
+:::
+
+
