@@ -81,7 +81,7 @@ The best way to interact with the tutorial is through [RStudio](https://github.c
 **Implementation error**
 
 ::: {.slides}
-[Slides]https://docs.google.com/presentation/d/1nUEOReOiAW9G7X7qJmcfFOJWXyIc0_27BrMPTjec9sE/edit?usp=sharing
+[Slides](https://docs.google.com/presentation/d/1nUEOReOiAW9G7X7qJmcfFOJWXyIc0_27BrMPTjec9sE/edit?usp=sharing)
 :::
 :::
 
