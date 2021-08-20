@@ -18,7 +18,6 @@ communication
 presenting-results
 ecosystem-mse
 multispecies-mses
-system-mse
 case-studies
 developing-objectives-candidate-strategies-for-asmfc-examples
 project-needs

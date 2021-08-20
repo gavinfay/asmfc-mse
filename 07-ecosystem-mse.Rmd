@@ -16,12 +16,13 @@ Management strategy evaluation for Ecosystem Based Fisheries Management and beyo
 :::
 
 
-## Coupled System MSEs {#system-mse}
+::: {.application-exercise} 
+**MS-PROD lite**
 
-::: {.slide-deck}
-**Multispecies MSEs**
-
-::: {.slides}
-[Slides](https://docs.google.com/presentation/d/1Lu5QvSybBRvMJ66e8akRmRDXl9iV6h-QkgEprBU4Kn4/edit?usp=sharing)
+This exercise provides a 'lite' version of the MS-PROD MSE applied to Georges Bank. Explore how the choice for control rules for groundfish (based on status of cod) and pelagics (based on leaving enough food for predators) influences the performance metrics at the species and ecosystem level.  
+ 
+::: {.source}
+[R Markdown](https://github.com/gavinfay/asmfc-mse/tree/main/materials/exercises/day-04/msprod-mse.Rmd)
 :::
+
 :::

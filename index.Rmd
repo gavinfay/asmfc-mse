@@ -70,7 +70,7 @@ _(subject to change)_
 | Th | 1-2 | [Implementation error (lecture)](#implementation) |
 | Th | 2-3 | Case study project work time |
 | Th | 3-5 | [multispecies MSEs (lecture, R exercise)](#ecosystem-mse) |
-| F | 9-10 | [Coupled system MSEs?](#system-mse) |
+| F | 9-10 | [Additional MSE topics (lecture)](#grab-bag) |
 | F | 10:30-12 | Case study project summaries, Workshop review |
 
 
