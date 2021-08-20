@@ -11,7 +11,7 @@ rmd_files: [
   "05-stakeholder-engagement.Rmd",
   "06-presenting-results.Rmd",
   "07-ecosystem-mse.Rmd",
-  "08-additional-topics.Rmd"
+  "08-additional-topics.Rmd",
   "08-case-studies.Rmd"
   #"rstudio.Rmd", # session 1
   #"github.Rmd", # session 2

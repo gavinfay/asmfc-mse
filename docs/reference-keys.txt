@@ -18,6 +18,8 @@ communication
 presenting-results
 ecosystem-mse
 multispecies-mses
+grab-bag
+choose-your-own-adventure
 case-studies
 developing-objectives-candidate-strategies-for-asmfc-examples
 project-needs
