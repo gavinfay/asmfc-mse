@@ -133,47 +133,10 @@ These workshops follow the [Fay Lab code of conduct:](https://thefaylab.github.i
 
 All materials are released with [Creative Commons Attribution Share Alike 4.0 International](LICENSE.md) license.
 
+## Acknowledgements
 
-This website is built with [bookdown](https://bookdown.org/), the lovely icons by [icons8](http://icons8.com/).  
+This website is built with [bookdown](https://bookdown.org/), and the lovely icons by [icons8](http://icons8.com/). The course website design was based on both the [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julie Lowndes & Allison Horst, and the [Data Science in a Box](https://datasciencebox.org/) by Mine Çetinkaya-Rundel. All errors are purely by Gavin. Content in the course includes materials originally developed by [André Punt](https://fish.uw.edu/faculty/andre-punt/). Lectures and exercises that include material from André are noted on the title slide or at the top of scripts/Rmarkdowns. Again, all errors by Gavin. Some additional slide content courtesy of Jonathan Deroba, Amanda Hart, Mackenzie Mazur, and Sam Truesdell.  
 
 
-<!-- 1. **Download workshop data**  -->
-<!--     - Google Drive folder: [r-for-excel-data ](https://drive.google.com/drive/folders/1RywSUw8hxETlROdIhLIntxPsZq0tKSdS?usp=sharing) -->
-<!--     - Save it temporarily somewhere you will remember; we will move it together -->
-    
-<!---
-1. Get comfortable: if you're not in a physical workshop, be set up with two screens if possible. You will be following along in RStudio on your own computer while also watching a virtual training or following this tutorial on your own.
---->
 
-<!-- ## Data citations -->
 
-<!-- We use the following data from the Santa Barbara Coastal Term Ecological Research and National  Oceanic and Atmospheric Administration in this workshop:  -->
-
-<!-- - **fish.csv** -->
-<!--   - Description: Reef fish abundance, SB coast -->
-<!--   - Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=17&revision=newest -->
-<!--   - Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Fish abundance. Environmental Data Initiative. [doi](https://doi.org/10.6073/pasta/dbd1d5f0b225d903371ce89b09ee7379). -->
-<!-- - **inverts.xlsx** -->
-<!--   - Description: Invertebrate counts, SB coast -->
-<!--   - Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=19&revision=newest -->
-<!--   - Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Invertebrate and algal density. Environmental Data Initiative. [doi](https://doi.org/10.6073/pasta/748ee568669ca2b740e9b8f5f8a085d8).  -->
-<!-- - **kelp.xlsx** -->
-<!--   - Description: Giant kelp abundance and size, SB coast -->
-<!--   - Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=18&revision=newest                         -->
-<!--   - Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Abundance and size of Giant Kelp (Macrocystis Pyrifera), ongoing since 2000. Environmental Data Initiative. [doi](https://doi.org/10.6073/pasta/dea56e02127161194626f97c8b6118e8).  -->
-<!-- - **lobsters.xlsx and lobsters2.xlsx** -->
-<!--   - Description: Lobster size, abundance and fishing pressure (SB coast) -->
-<!--   - Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=77&revision=newest -->
-<!--   - Citation: Reed D. 2019. SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012. Environmental Data Initiative. [doi](https://doi.org/10.6073/pasta/a593a675d644fdefb736750b291579a0).  -->
-<!-- - **noaa_fisheries.csv** -->
-<!--   - Description: NOAA Commercial Fisheries Landing data (1950 - 2017) -->
-<!--   - Link: https://www.st.nmfs.noaa.gov/commercial-fisheries/commercial-landings/ -->
-<!--   - Source: Fisheries Statistics Division of the NOAA Fisheries -->
-<!-- - **substrate.xlsx ** -->
-<!--   - Description: Algal cover, invertebrates and substrates near Santa Cruz Island -->
-<!--   - Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=38&revision=newest -->
-<!--   - Citation: Schmitt R. J., S. J. Holbrook. 2012. SBC LTER: Santa Cruz Island: Cover of Algae, Invertebrates and Benthic Substrate. Environmental Data Initiative. [doi](https://doi.org/10.6073/pasta/9ce22c5b70d3e6ef8f0445e6cf782f87).  -->
-<!-- - **ca_np.csv and ci_np.xlsx** -->
-<!--   - Description: US National Parks visitation data (1904 - 2016) -->
-<!--   - Link: https://data.world/inform8n/us-national-parks-visitation-1904-2016-with-boundaries -->
-<!--   - Source: Data originally accessed from the US Department of the Interior National Park Service’s Integrated Resource Management Applications data portal (https://irma.nps.gov/) -->
