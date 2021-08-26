@@ -1,5 +1,4 @@
 welcome
-acknowledgements
 intro
 what-is-mse
 first-mse
