@@ -135,7 +135,7 @@ All materials are released with [Creative Commons Attribution Share Alike 4.0 In
 
 ## Acknowledgements {.unnumbered}
 
-This website is built with [bookdown](https://bookdown.org/), and the lovely icons by [icons8](http://icons8.com/). The course website design was based on both the [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julie Lowndes & Allison Horst, and the [Data Science in a Box](https://datasciencebox.org/) course by Mine Çetinkaya-Rundel. All errors are purely by Gavin. Content in the course includes materials originally developed by [André Punt](https://fish.uw.edu/faculty/andre-punt/). Lectures and exercises that include material from André are noted on the title slide or at the top of scripts/Rmarkdowns. Again, all errors by Gavin. Some additional slide content courtesy of Jonathan Deroba, Amanda Hart, Mackenzie Mazur, and Sam Truesdell.  
+This website is built with [bookdown](https://bookdown.org/), and the lovely icons by [icons8](http://icons8.com/). The course website design was based on both the [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julie Lowndes & Allison Horst, and the [Data Science in a Box](https://datasciencebox.org/) course by Mine Çetinkaya-Rundel. All errors are purely by Gavin. Content in the course includes materials originally developed by [André Punt](https://fish.uw.edu/faculty/andre-punt/). Lectures and exercises that include material from André are noted on the title slide or at the top of scripts/Rmarkdowns. Again, all errors by Gavin. Some additional slide content courtesy of Jonathan Cummings, Jonathan Deroba, Amanda Hart, Lisa Kerr, Mackenzie Mazur, Molly Morse, Sam Truesdell, and Ashley Weston.  
 
 
 
